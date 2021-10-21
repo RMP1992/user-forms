@@ -1,9 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongodb = require('mongodb');
-
+const mongoose = require('mongoose');
 const app = express();
+require('dotenv/config');
+
 
 //Middleware
 
@@ -12,8 +13,9 @@ app.use(cors());
 
 const posts = require('./routes.js');
 
-app.use('/api/posts', posts);
-
+app.use('/posts', posts);
+//connect to DB
+mongoose.connect(process.env.CONNECTION_DB, {useNewUrlParser: true}, () => { console.log("connected to DB")})
 
 const port = process.env.PORT || 5000;
 
