@@ -1,6 +1,6 @@
 const express = require('express');
 const mongodb = require('mongodb');
-
+const Post = require('./models/post')
 
 const router = express.Router();
 
